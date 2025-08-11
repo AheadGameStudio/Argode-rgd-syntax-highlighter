@@ -1,0 +1,225 @@
+{
+    "name": "Ren'Gd Script",
+    "scopeName": "source.rgd",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#labels"
+        },
+        {
+            "include": "#definitions"
+        },
+        {
+            "include": "#commands"
+        },
+        {
+            "include": "#dialogue"
+        },
+        {
+            "include": "#choices"
+        },
+        {
+            "include": "#variables"
+        },
+        {
+            "include": "#inline-tags"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [{
+                "name": "comment.line.number-sign.rgd",
+                "match": "#.*$"
+            }]
+        },
+        "labels": {
+            "patterns": [{
+                "name": "entity.name.function.label.rgd",
+                "match": "^\\s*(label)\\s+(\\w+)(:)",
+                "captures": {
+                    "1": {"name": "keyword.control.label.rgd"},
+                    "2": {"name": "entity.name.function.rgd"},
+                    "3": {"name": "punctuation.separator.rgd"}
+                }
+            }]
+        },
+        "definitions": {
+            "patterns": [
+                {
+                    "name": "meta.definition.character.rgd",
+                    "match": "^\\s*(character)\\s+(\\w+)\\s+(\"[^\"]*\")(?:\\s+(color=\\S+))?",
+                    "captures": {
+                        "1": {"name": "keyword.control.definition.rgd"},
+                        "2": {"name": "entity.name.variable.rgd"},
+                        "3": {"name": "string.quoted.double.rgd"},
+                        "4": {"name": "variable.parameter.rgd"}
+                    }
+                },
+                {
+                    "name": "meta.definition.image.rgd",
+                    "match": "^\\s*(image)\\s+(\\S+)\\s*=\\s*(\"[^\"]*\")",
+                    "captures": {
+                        "1": {"name": "keyword.control.definition.rgd"},
+                        "2": {"name": "entity.name.variable.rgd"},
+                        "3": {"name": "string.quoted.double.rgd"}
+                    }
+                },
+                {
+                    "name": "meta.definition.audio.rgd",
+                    "match": "^\\s*(audio)\\s+(\\S+)\\s*=\\s*(\"[^\"]*\")",
+                    "captures": {
+                        "1": {"name": "keyword.control.definition.rgd"},
+                        "2": {"name": "entity.name.variable.rgd"},
+                        "3": {"name": "string.quoted.double.rgd"}
+                    }
+                },
+                {
+                    "name": "meta.definition.shader.rgd",
+                    "match": "^\\s*(shader)\\s+(\\S+)\\s*=\\s*(\"[^\"]*\")",
+                    "captures": {
+                        "1": {"name": "keyword.control.definition.rgd"},
+                        "2": {"name": "entity.name.variable.rgd"},
+                        "3": {"name": "string.quoted.double.rgd"}
+                    }
+                },
+                {
+                    "name": "meta.definition.legacy.rgd",
+                    "match": "^\\s*(define)\\s+(\\w+)\\s*=\\s*(Character)\\((\"[^\"]*\")\\)",
+                    "captures": {
+                        "1": {"name": "keyword.control.definition.rgd"},
+                        "2": {"name": "entity.name.variable.rgd"},
+                        "3": {"name": "support.function.rgd"},
+                        "4": {"name": "string.quoted.double.rgd"}
+                    }
+                }
+            ]
+        },
+        "commands": {
+            "patterns": [
+                {
+                    "name": "keyword.control.flow.rgd",
+                    "match": "^\\s*(jump|call|return)(?:\\s+(\\w+))?",
+                    "captures": {
+                        "2": {"name": "entity.name.function.rgd"}
+                    }
+                },
+                {
+                    "name": "keyword.control.conditional.rgd",
+                    "match": "^\\s*(if|else)(?:\\s+(.+?))?(:)?",
+                    "captures": {
+                        "2": {"name": "meta.expression.rgd"},
+                        "3": {"name": "punctuation.separator.rgd"}
+                    }
+                },
+                {
+                    "name": "keyword.control.menu.rgd",
+                    "match": "^\\s*(menu)(:)",
+                    "captures": {
+                        "2": {"name": "punctuation.separator.rgd"}
+                    }
+                },
+                {
+                    "name": "keyword.control.display.rgd",
+                    "match": "^\\s*(show|hide|scene)\\s+(\\w+)(?:\\s+(\\w+))?(?:\\s+(at)\\s+(\\w+))?(?:\\s+(with)\\s+(\\w+))?",
+                    "captures": {
+                        "2": {"name": "entity.name.variable.rgd"},
+                        "3": {"name": "variable.parameter.rgd"},
+                        "4": {"name": "keyword.operator.rgd"},
+                        "5": {"name": "variable.parameter.rgd"},
+                        "6": {"name": "keyword.operator.rgd"},
+                        "7": {"name": "variable.parameter.rgd"}
+                    }
+                },
+                {
+                    "name": "keyword.control.variable.rgd",
+                    "match": "^\\s*(set)\\s+(\\w+)\\s*(=)\\s*(.+)",
+                    "captures": {
+                        "2": {"name": "variable.name.rgd"},
+                        "3": {"name": "keyword.operator.assignment.rgd"},
+                        "4": {"name": "meta.expression.rgd"}
+                    }
+                },
+                {
+                    "name": "keyword.control.screen.rgd",
+                    "match": "^\\s*(call_screen|close_screen)(?:\\s+(\\S+))?",
+                    "captures": {
+                        "2": {"name": "entity.name.variable.rgd"}
+                    }
+                },
+                {
+                    "name": "keyword.control.custom.rgd",
+                    "match": "^\\s*(wait|window|screen_flash|my_effect|hello_world|async_effect)(?:\\s+(.+))?",
+                    "captures": {
+                        "2": {"name": "variable.parameter.rgd"}
+                    }
+                }
+            ]
+        },
+        "dialogue": {
+            "patterns": [{
+                "name": "meta.dialogue.rgd",
+                "match": "^\\s*(?:(\\w+)\\s+)?(\".*\")",
+                "captures": {
+                    "1": {"name": "entity.name.character.rgd"},
+                    "2": {"name": "string.quoted.double.dialogue.rgd"}
+                }
+            }]
+        },
+        "choices": {
+            "patterns": [{
+                "name": "meta.choice.rgd",
+                "match": "^\\s*(\"[^\"]+\")(:)",
+                "captures": {
+                    "1": {"name": "string.quoted.double.choice.rgd"},
+                    "2": {"name": "punctuation.separator.rgd"}
+                }
+            }]
+        },
+        "variables": {
+            "patterns": [
+                {
+                    "name": "variable.language.variable-expansion.rgd",
+                    "match": "\\[\\w+\\]"
+                },
+                {
+                    "name": "variable.language.legacy-expansion.rgd",
+                    "match": "\\{\\w+\\}"
+                }
+            ]
+        },
+        "inline-tags": {
+            "patterns": [{
+                "name": "markup.inline.tag.rgd",
+                "match": "\\{(\\w+)(?:=(\\S+))?\\}",
+                "captures": {
+                    "1": {"name": "entity.name.tag.rgd"},
+                    "2": {"name": "variable.parameter.rgd"}
+                }
+            }]
+        },
+        "strings": {
+            "patterns": [{
+                "name": "string.quoted.double.rgd",
+                "begin": "\"",
+                "end": "\"",
+                "patterns": [
+                    {
+                        "include": "#variables"
+                    },
+                    {
+                        "include": "#inline-tags"
+                    },
+                    {
+                        "name": "constant.character.escape.rgd",
+                        "match": "\\\\."
+                    }
+                ]
+            }]
+        }
+    }
+}

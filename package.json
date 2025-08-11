@@ -1,0 +1,23 @@
+{
+    "name": "argode-rgd-syntax-highlighter",
+    "displayName": "Argode Script Syntax Highlighter",
+    "description": "Syntax highlighting for .rgd visual novel script files",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": ["Programming Languages"],
+    "contributes": {
+        "languages": [{
+            "id": "rgd",
+            "aliases": ["Argode Scenario Script", "rgd"],
+            "extensions": [".rgd"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "rgd",
+            "scopeName": "source.rgd",
+            "path": "./syntaxes/rgd.tmLanguage.json"
+        }]
+    }
+}
