@@ -3,10 +3,22 @@
     "displayName": "Argode Script Syntax Highlighter",
     "description": "Syntax highlighting for .rgd visual novel script files",
     "version": "1.0.0",
+    "publisher": "AheadGameStudio",
+    "license": "MIT",
     "engines": {
         "vscode": "^1.60.0"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AheadGameStudio/Argode-rgd-syntax-highlighter.git"
+    },
+    "bugs": {
+        "url": "https://github.com/AheadGameStudio/Argode-rgd-syntax-highlighter/issues"
+    },
+    "homepage": "https://github.com/AheadGameStudio/Argode-rgd-syntax-highlighter#readme",
     "categories": ["Programming Languages"],
+    "keywords": ["rgd", "argode", "visual novel", "syntax highlighting", "ren'py-like"],
+    "icon": "images/icon.png",
     "contributes": {
         "languages": [{
             "id": "rgd",
