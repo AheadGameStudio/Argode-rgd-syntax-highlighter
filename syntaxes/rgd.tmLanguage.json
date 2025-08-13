@@ -152,6 +152,21 @@
                     }
                 },
                 {
+                    "name": "keyword.control.audio.rgd",
+                    "match": "^\\s*(play_music|stop_music|play_sfx|stop_sfx)(?:\\s+(.+))?",
+                    "captures": {
+                        "2": {"name": "variable.parameter.rgd"}
+                    }
+                },
+                {
+                    "name": "keyword.control.ui.rgd",
+                    "match": "^\\s*(ui)\\s+(show|hide|toggle)(?:\\s+(\\S+))?",
+                    "captures": {
+                        "2": {"name": "keyword.control.ui.action.rgd"},
+                        "3": {"name": "entity.name.variable.rgd"}
+                    }
+                },
+                {
                     "name": "keyword.control.custom.rgd",
                     "match": "^\\s*(wait|window|screen_flash|my_effect|hello_world|async_effect)(?:\\s+(.+))?",
                     "captures": {
