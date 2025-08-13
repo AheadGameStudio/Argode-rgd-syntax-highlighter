@@ -2,7 +2,7 @@
     "name": "argode-rgd-syntax-highlighter",
     "displayName": "Argode Script Syntax Highlighter",
     "description": "Syntax highlighting for .rgd visual novel script files",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "publisher": "AheadGameStudio",
     "license": "MIT",
     "engines": {
